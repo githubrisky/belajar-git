@@ -1,14 +1,17 @@
-const connetdb = require('mysql');
+const mysql = require('mysql');
 
-const db = connetdb.createConnection({
+const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
   database: 'risky_blog',
 });
- if(db.connect){
+
+db.connect((err) => {
+  if (err) {
+    console.log("Database Not Connected", err);
+  } else {
     console.log("Database Connected");
- }else{
-    console.log("Database Not Connected");
- }
- export default db;
+  }
+});
+
